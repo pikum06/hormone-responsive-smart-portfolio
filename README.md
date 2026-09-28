@@ -10,6 +10,8 @@ This public repository contains output visualizations, backtest datasets, and da
 
 ---
 
+**ABOUT**
+
 An interactive visual analytics dashboard and automated evaluation suite for bio-signal-driven portfolio risk management. This repository processes backtest execution logs, market indicators, and physiological stress metrics (e.g., cortisol/HRV proxies) to quantify how automated bio-circuit breakers mitigate drawdowns, control exposure decay, and preserve slippage-adjusted yield during volatile trading regimes.
 
 ---
