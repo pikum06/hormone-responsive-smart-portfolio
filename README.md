@@ -128,7 +128,7 @@ This graph represents the rolling correlation analysis (250-period window) betwe
 
 ![System Interdependency Matrix](outcomes/correlation_heatmap.png)
 
-The illustrations represents the correlation heatmap provides a cross-variable analysis of the framework’s core metrics: ₿ Rolling Volatility, Leverage Caps, Executed Leverage, and the Bio-Stress Index. The matrix confirms the structural integrity of the system by showing near-zero or slightly negative correlations between biological stress and market volatility (-0.03). These results validate the use of the Bio-Stress Index as a pure metric for internal emotional states, distinct from external market-driven stress.
+The illustrations represents the correlation heatmap provides a cross-variable analysis of the framework’s core metrics: Rolling Volatility, Leverage Caps, Executed Leverage, and the Bio-Stress Index. The matrix confirms the structural integrity of the system by showing near-zero or slightly negative correlations between biological stress and market volatility (-0.03). These results validate the use of the Bio-Stress Index as a pure metric for internal emotional states, distinct from external market-driven stress.
 
 3. **final_analysis.png**
 
