@@ -12,26 +12,40 @@ An interactive visual analytics dashboard and automated evaluation suite for bio
 
 ```text
 .
-├── data/
-│   ├── final_backtest_results.csv
-│   ├── hormone_transaction_logs.csv
-│   ├── processed_bio_signals.csv
-│   └── processed_market_signals.csv
-├── outcomes/
-│   ├── correlation_heatmap.png
-│   ├── cortisol.png
-│   ├── final_analysis.png
-│   ├── graph_1_avoided_loss.png
-│   ├── graph_2_experience_decay.png
-│   ├── graph_3_slippage_yield.png
-│   ├── graph_a_cortisol_beta.png
-│   └── mitigation_loss.png
-├── research/
-│   ├── dashboard.py
-│   ├── graph_1.py
-│   ├── graph_2.py
-│   └── graph_3.py
-└── .gitignore
+├── data/                             # Telemetry datasets & backtest execution logs
+│   ├── final_backtest_results.csv    # Simulated strategy metrics & drawdown benchmark data
+│   ├── hormone_transaction_logs.csv  # On-chain smart contract leverage scaling logs
+│   ├── processed_bio_signals.csv     # Extracted RMSSD & physiological stress time-series
+│   └── processed_market_signals.csv  # Volatility indices & market regime telemetry
+├── outcomes/                         # Performance visualizer output graphs & analytical plots
+│   ├── correlation_heatmap.png       # Stress vs. market volatility correlation matrix
+│   ├── Cortisol.png                  # Biomarker level tracking across market shock regimes
+│   ├── final_analysis.png            # Comparative yield & capital preservation summary
+│   ├── graph_1_avoided_loss.png      # Circuit breaker execution & avoided loss scatter plot
+│   ├── graph_2_experience_decay.png  # Dynamic risk tolerance decay across market trauma
+│   ├── graph_3_slippage_yield.png    # Cumulative yield vs. algorithmic slippage penalty
+│   ├── graph_a_cortisol_beta.png     # Physiological calm vs. portfolio beta regression
+│   ├── mitigation_loss.png           # Cumulative drawdown mitigation curve
+│   ├── panic_active.png              # Real-time deleveraging during active panic regimes
+│   └── panic_nominal.png             # Unmitigated portfolio drawdown baseline
+├── research/                         # Quantitative models, signal engines & dashboard UI
+│   ├── analyzer.py                   # Macroeconomic trauma & yield curve stress analyzer
+│   ├── backtest_engine.py            # Local backtest simulator for bio-signal leverage adjustments
+│   ├── bio_processor.py              # Biometric signal processing & RMSSD score extraction
+│   ├── correlation.py                # Physiological stress vs. market volatility correlation
+│   ├── cortisol_beta.py              # Cortisol-beta correlation & sustainable leverage model
+│   ├── dashboard.py                  # Streamlit interactive bio-trading interface
+│   ├── graph_1.py                    # Avoided loss scatter plot generator
+│   ├── graph_2.py                    # Experience decay plot generator
+│   ├── graph_3.py                    # Slippage & cumulative yield plot generator
+│   ├── hormone.py                    # Biological circuit breaker core & leverage scaling logic
+│   ├── loss_mitigation.py            # Drawdown protection & loss mitigation analyzer
+│   ├── market_analyzer.py            # High-frequency market volatility & crash regime detection
+│   ├── on_chain_sync.py              # Solana test validator transaction execution & state sync
+│   └── rolling_prediction.py         # 30-day rolling stress level & trajectory prediction
+├── .gitignore                        # Git exclusion rules
+├── README.md                         # Protocol documentation & architectural overview
+└── requirements.txt                  # Python dependency specifications 
 ```
 
 ---
@@ -42,23 +56,43 @@ The UI and visualization pipeline consumes processed market signals and physiolo
 
 ```mermaid
 graph TD
-    %% Input Data
-    A[processed_bio_signals.csv] --> C[Research Analytics Engine]
-    B[processed_market_signals.csv] --> C
-    D[final_backtest_results.csv] --> C
-    E[hormone_transaction_logs.csv] --> C
+    subgraph Ingestion ["1. Telemetry Ingestion & Signal Processing"]
+        A1[Biometric Telemetry / HR / RMSSD] -->|Signal Extraction| P1[research/bio_processor.py]
+        A2[Market Telemetry / Volatility] -->|Regime Detection| P2[research/market_analyzer.py]
+        P1 --> D1[(data/processed_bio_signals.csv)]
+        P2 --> D2[(data/processed_market_signals.csv)]
+    end
 
-    %% Script Processing
-    C --> F[research/dashboard.py]
-    C --> G[research/graph_1.py<br/>Avoided Loss Analysis]
-    C --> H[research/graph_2.py<br/>Experience Decay Model]
-    C --> I[research/graph_3.py<br/>Slippage-Adjusted Yield]
+    subgraph Quantitative ["2. Stress Analytics & Regression Engine"]
+        D1 & D2 --> C1[research/correlation.py]
+        D1 & D2 --> C2[research/cortisol_beta.py]
+        D1 & D2 --> C3[research/analyzer.py]
+        D1 --> C4[research/rolling_prediction.py]
+    end
 
-    %% Outputs
-    F --> J[Interactive Dashboard Interface]
-    G --> K[outcomes/ Data Visualizations & PNG Figures]
-    H --> K
-    I --> K
+    subgraph CircuitBreaker ["3. Biological Circuit Breaker & Deleveraging Core"]
+        C1 & C2 & C3 & C4 --> H1[research/hormone.py]
+        H1 -->|Dynamic Leverage Scaling| L1[research/loss_mitigation.py]
+        H1 -->|Strategy Simulation| B1[research/backtest_engine.py]
+        B1 --> D3[(data/final_backtest_results.csv)]
+        H1 -->|Deleveraging Instructions| O1[research/on_chain_sync.py]
+        O1 -->|Solana Validator Transactions| S1[Solana On-Chain Protocol]
+        S1 --> D4[(data/hormone_transaction_logs.csv)]
+    end
+
+    subgraph Presentation ["4. Outcomes Visualizer & Streamlit Interface"]
+        B1 --> G1[research/graph_1.py]
+        B1 --> G2[research/graph_2.py]
+        B1 --> G3[research/graph_3.py]
+        G1 & G2 & G3 --> OUT[outcomes/*.png Artifacts]
+        
+        H1 & B1 & D4 --> DB[research/dashboard.py]
+        DB --> UI[Streamlit Control Center]
+    end
+
+    style H1 fill:#7b2cbf,stroke:#fff,stroke-width:2px,color:#fff
+    style S1 fill:#14f195,stroke:#000,stroke-width:2px,color:#000
+    style UI fill:#ff4b4b,stroke:#fff,stroke-width:2px,color:#fff
 ```
 
 ---
