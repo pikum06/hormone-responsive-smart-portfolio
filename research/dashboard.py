@@ -151,7 +151,7 @@ else:
         delta_action = "Stable"
         cap_delta = "Max Allowed" if display_cap == 1.0 else "Restricted"
 
-    # 4. Math for Executed Leverage based on Slider
+    # Math for Executed Leverage based on Slider
 
     # We multiply the display_cap (which is either 0.1 or 1.0) by slider value
 
@@ -201,6 +201,7 @@ else:
     st.divider()
 
     # Displaying the last 10 rows of the backtest data and hormone transaction logs side by side
+    
     col_left, col_right = st.columns([2, 2])
     with col_left:
         st.subheader("Final Backtest Data Stream")

@@ -21,28 +21,35 @@ SLIPPAGE_RATE = 0.00001
 np.random.seed(42)
 # increasing the drift to 0.0025 to ensure the portfolio compounds visibly
 # reducing volatility to 0.008 to prevent "volatility drag" from flattening the curve
+
 base_returns = np.random.normal(0.0025, 0.008, len(df))
 
 # Standard Portfolio dies from a -12% shock
+
 df['market_return'] = base_returns - (df['panic_signal'] * 0.12)
 
 #Standard Portfolio Math
+
 df['std_growth'] = 1 + (df['market_return'] * STANDARD_LEVERAGE)
 df['std_growth'] = np.maximum(0, df['std_growth']) 
 df['standard_portfolio'] = INITIAL_CAPITAL * df['std_growth'].cumprod()
 
 #Bio-Responsive Portfolio Math
 # Defensive Logic: Drop to 0.1x leverage during panic (Ultra-Safety)
+
 df['effective_leverage'] = np.where(df['panic_signal'] == 1, 0.1, df['leverage_cap'])
 
 df['bio_growth'] = 1 + (df['market_return'] * df['effective_leverage'])
+
 # Minimal slippage logic
+
 lev_change = df['effective_leverage'].diff().fillna(0).abs()
 df['bio_growth'] -= (lev_change * SLIPPAGE_RATE)
 
 df['bio_portfolio'] = INITIAL_CAPITAL * df['bio_growth'].cumprod()
 
 #Build the Plot
+
 plt.figure(figsize=(12, 6))
 
 plt.plot(df['period'], df['standard_portfolio'], label="Standard 10x Portfolio (Liquidated)", color='tab:red', linestyle='--', linewidth=1.5)
@@ -51,6 +58,7 @@ plt.plot(df['period'], df['bio_portfolio'], label="Bio-Responsive Portfolio (Com
 plt.ylim(0, df['bio_portfolio'].max() * 1.3)
 
 # Formatting
+
 plt.title('Cumulative Loss Mitigation\nStrategic Wealth Compounding via Biometric Risk Management', fontsize=14, fontweight='bold')
 plt.xlabel('Backtest Timeline (Ticks)', fontsize=12)
 plt.ylabel('Portfolio Value ($)', fontsize=12)

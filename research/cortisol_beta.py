@@ -7,8 +7,8 @@ import numpy as np
 df_results = pd.read_csv("../data/final_backtest_results.csv")
 df_bio = pd.read_csv("../data/processed_bio_signals.csv")
 
-# Ensure we align the biological data with the backtest length
-# We take a sample of the bio data to match the trades
+# Ensuring the biological data is aligned with the backtest length
+# Taking a sample of the bio data to match the trades
 df = df_results.copy()
 df['RMSSD'] = df_bio['RMSSD'].iloc[:len(df)].values
 
