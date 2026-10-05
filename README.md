@@ -50,6 +50,21 @@ An interactive visual analytics dashboard and automated evaluation suite for bio
 
 ---
 
+## Dataset 
+
+The protocol relies on the **SWELL Knowledge Work (SWELL-KW)** Heart Rate Variability dataset to establish physiological stress telemetry baselines and evaluate biological circuit breaker triggers:
+
+* **Dataset**: [SWELL Heart Rate Variability (HRV) Dataset (Kaggle)](https://www.kaggle.com/datasets/qiriro/swell-heart-rate-variability-hrv)
+* **Origin**: Multimodal research conducted by Radboud University (Institute for Computing and Information Sciences) on 25 subjects under knowledge work scenarios.
+* **Experimental Stress Regimes**:
+  1. **No Stress**: Neutral baseline task environment (up to 45 minutes).
+  2. **Time Pressure**: Work duration constrained to $\frac{2}{3}$ of nominal completion time.
+  3. **Interruption**: Task execution under unexpected email interruptions and attention splits.
+* **Physiological Indicators**: Features ECG-derived Heart Rate Variability (HRV) indices (including RMSSD, SDNN, and LF/HF frequency ratios), skin conductance, and self-reported mental workload/stress metrics.
+* **Protocol Integration**: Serves as the real-world bio-signal baseline (`data/processed_bio_signals.csv`) ingested by `research/bio_processor.py` and `research/cortisol_beta.py` to compute RMSSD stress scores, model cortisol-beta correlations, and trigger dynamic leverage scaling in `research/hormone.py`.
+
+---
+
 ## Analytics & System Architecture
 
 The UI and visualization pipeline consumes processed market signals and physiological telemetry to evaluate leverage adjustments, circuit breaker triggers, and net portfolio performance.
