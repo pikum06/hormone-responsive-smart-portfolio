@@ -4,7 +4,7 @@ import seaborn as sns
 
 # Setup and Load Data
 sns.set_theme(style="whitegrid")
-df = pd.read_csv("../data/final_backtest_results.csv")
+df = pd.read_csv("../outcomes/csv/final_backtest_results.csv")
 df['period'] = df.index
 
 # Calculate Stress Level
@@ -33,7 +33,7 @@ plt.ylim(-1, 1)
 plt.tight_layout()
 
 # Save the Graph
-output_filename = "../outcomes/Cortisol.png"
+output_filename = "../outcomes/graphs/Cortisol.png"
 plt.savefig(output_filename, dpi=300, bbox_inches='tight')
 print(f"Saved graph as: {output_filename}")
 plt.close()

@@ -17,7 +17,7 @@ try:
         m_df['market_panic'] = m_df[vol_col] > threshold
         
         # Save a processed version for merging with bio data and backtest results
-        m_df[['Date', vol_col, 'market_panic']].to_csv("../data/processed_market_signals.csv", index=False)
+        m_df[['Date', vol_col, 'market_panic']].to_csv("../outcomes/csv/processed_market_signals.csv", index=False)
         print(f"Using {vol_col} to detect panic.")
         print(m_df[['Date', 'market_panic']].head())
     else:

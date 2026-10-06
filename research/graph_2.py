@@ -59,7 +59,7 @@ plt.grid(True, linestyle='--', alpha=0.6)
 plt.tight_layout()
 
 # Saving the Graph
-output_filename = "../outcomes/graph_2_experience_decay.png"
+output_filename = "../outcomes/graphs/graph_2_experience_decay.png"
 plt.savefig(output_filename, dpi=300, bbox_inches='tight')
 print(f"Graph saved locally as: {output_filename}")
 

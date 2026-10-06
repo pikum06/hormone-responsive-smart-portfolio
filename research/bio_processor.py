@@ -25,7 +25,7 @@ def map_stress_to_leverage(condition):
 df['leverage_cap'] = df['condition'].apply(map_stress_to_leverage)
 
 #Save a new data file with the leverage caps for merging with market data
-processed_path = "../data/processed_bio_signals.csv"
+processed_path = "../outcomes/csv/processed_bio_signals.csv"
 df[['MEAN_RR', 'RMSSD', 'condition', 'leverage_cap']].to_csv(processed_path, index=False)
 
 print(f"\nProcessed data saved to {processed_path}")

@@ -51,7 +51,7 @@ st.markdown("""
 @st.cache_data(ttl=3)
 def load_dashboard_data():
     try:
-        backtest_df = pd.read_csv("../data/final_backtest_results.csv") 
+        backtest_df = pd.read_csv("../outcomes/csv/final_backtest_results.csv") 
         if not backtest_df.empty:
 
             # Dropping empty trailing rows that causes NaN 
@@ -78,7 +78,7 @@ def load_dashboard_data():
         backtest_df = pd.DataFrame(columns=['Date', 'BTC_Rolling_Vol_30d', 'market_panic', 'leverage_cap'])
 
     try:
-        logs_df = pd.read_csv("../data/hormone_transaction_logs.csv")
+        logs_df = pd.read_csv("../outcomes/csv/hormone_transaction_logs.csv")
         if not logs_df.empty:
 
             # Drop empty rows here too just to be safe
@@ -100,7 +100,9 @@ df_backtest, df_logs = load_dashboard_data()
 # Sidebar Control Panel
 
 st.sidebar.title("Bio-Link Control Panel")
+
 #st.sidebar.markdown("Solana Network:`Localhost`")
+
 st.sidebar.markdown("File Engine Sync: `Active`")
 st.sidebar.divider()
 
@@ -127,7 +129,7 @@ else:
     raw_cap = float(latest_tick.get('leverage_cap', 1.0))
     current_vol = float(latest_tick.get('BTC_Rolling_Vol_30d', 0.0))
     
-    # 2. Hard Overriding for Panic State based on Dropdown
+    # Hard Overriding for Panic State based on Dropdown
 
     if panic_mode == "Force Trip (PANIC = TRUE)":
         display_panic = True
@@ -136,7 +138,7 @@ else:
     else:
         display_panic = raw_panic
 
-    # 3. Hard Overriding for Leverage based on Panic State
+    # Hard Overriding for Leverage based on Panic State
 
     if display_panic:
         display_cap = 0.1  # Force to 0.1 if panic is true

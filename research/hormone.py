@@ -4,14 +4,14 @@ import pandas as pd
 from solana.rpc.async_api import AsyncClient
 from solders.keypair import Keypair
 
-PRIVATE_KEY_LIST = [236,45,114,115,21,218,7,221,231,12,141,65,145,86,1,131,92,197,165,93,216,130,252,58,31,32,138,59,35,48,123,20,108,172,80,164,230,64,175,140,62,247,123,251,49,66,
-                    224,112,161,48,235,39,22,158,253,178,42,243,38,11,178,87,217,118]
+PRIVATE_KEY_LIST = [your_private_key_bytes_here]  # Replace with your actual private key bytes
 
 
 SENDER_KEYPAIR = Keypair.from_bytes(bytes(PRIVATE_KEY_LIST))
 
 
 RPC_URL = "http://127.0.0.1:8899"
+
 async def test_connection():
     async with AsyncClient(RPC_URL) as client:
         # Check balance of your 8KD... address
@@ -22,11 +22,12 @@ async def test_connection():
         print(f"Status: Connected to Linux Validator")
 if __name__ == "__main__":
     asyncio.run(test_connection())
+    
 async def run_backtest_simulation(csv_path):
 
     # Loading bio singals.csv from the current folder
 
-    df = pd.read_csv("final_backtest_results.csv")
+    df = pd.read_csv("../outcomes/csv/final_backtest_results.csv")
     results=[]
     async with AsyncClient(RPC_URL) as client:
         print(f"Starting Backtest for {len(df)} data points")        
@@ -55,9 +56,9 @@ async def run_backtest_simulation(csv_path):
 
         # After the loop, save to a new CSV
         results_df = pd.DataFrame(results)
-        results_df.to_csv('hormone_transaction_logs.csv', index=False)
+        results_df.to_csv('../outcomes/csv/hormone_transaction_logs.csv', index=False)
         print("Results saved to hormone_transaction_logs.csv")
 if __name__ == "__main__":
 
-    CSV_FILE = "final_backtest_results.csv" 
+    CSV_FILE = "../outcomes/csv/final_backtest_results.csv" 
     asyncio.run(run_backtest_simulation(CSV_FILE))

@@ -2,8 +2,8 @@ import pandas as pd
 
 # Loading two processed files
 
-bio = pd.read_csv("../data/processed_bio_signals.csv")
-mkt = pd.read_csv("../data/processed_market_signals.csv")
+bio = pd.read_csv("../outcomes/csv/processed_bio_signals.csv")
+mkt = pd.read_csv("../outcomes/csv/processed_market_signals.csv")
 
 #simulating a trading day
 

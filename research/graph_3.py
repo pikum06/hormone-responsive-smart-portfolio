@@ -4,8 +4,8 @@ import matplotlib.pyplot as plt
 
 #Loading the Datasets
 
-backtest_df = pd.read_csv("../data/final_backtest_results.csv")
-logs_df = pd.read_csv("../data/hormone_transaction_logs.csv")
+backtest_df = pd.read_csv("../outcomes/csv/final_backtest_results.csv")
+logs_df = pd.read_csv("../outcomes/csv/hormone_transaction_logs.csv")
 
 #Merging Data on Index
 
@@ -74,6 +74,7 @@ plt.xlabel('Backtest Timeline (Simulated Periods)', fontsize=12)
 plt.ylabel('Portfolio Value ($)', fontsize=12)
 
 # Highlighting key moments where the Bio-Circuit Breaker fired aggressively
+
 major_interventions = merged_df[leverage_change > 5]
 if not major_interventions.empty:
     plt.scatter(major_interventions.index, major_interventions['hormone_portfolio'], color='red', s=80, zorder=5, label='Major Bio-Circuit Breaker Fired')
@@ -83,7 +84,7 @@ plt.grid(True, linestyle='--', alpha=0.6)
 plt.tight_layout()
 
 # Saving the Graph
-output_filename = "../outcomes/graph_3_slippage_yield.png"
+output_filename = "../outcomes/graphs/graph_3_slippage_yield.png"
 plt.savefig(output_filename, dpi=300, bbox_inches='tight')
 print(f"Graph saved as: {output_filename}")
 

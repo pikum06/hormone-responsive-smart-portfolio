@@ -5,7 +5,7 @@ import seaborn as sns
 
 #Setup and Load Data
 sns.set_theme(style="whitegrid")
-df = pd.read_csv("../data/final_backtest_results.csv")
+df = pd.read_csv("../outcomes/csv/final_backtest_results.csv")
 
 #Clean Panic Data
 df['panic_str'] = df['market_panic'].astype(str).str.strip().str.lower()
@@ -67,6 +67,6 @@ plt.legend(loc='upper right')
 plt.fill_between(df['period'], df['bio_portfolio'], 0, color='tab:green', alpha=0.15)
 plt.tight_layout()
 
-output_filename = "../outcomes/mitigation_loss1.png"
+output_filename = "../outcomes/graphs/mitigation_loss1.png"
 plt.savefig(output_filename, dpi=300)
 print(f"Image saved as {output_filename}")

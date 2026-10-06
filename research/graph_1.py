@@ -5,8 +5,8 @@ from mpl_toolkits.mplot3d import Axes3D
 
 # Loading the Datasets
 
-logs_df = pd.read_csv("../data/hormone_transaction_logs.csv")
-backtest_df = pd.read_csv("../data/final_backtest_results.csv")
+logs_df = pd.read_csv("../outcomes/csv/hormone_transaction_logs.csv")
+backtest_df = pd.read_csv("../outcomes/csv/final_backtest_results.csv")
 
 #Extracting only what we need from the backtest to prevent duplicate columns
 
@@ -84,7 +84,7 @@ ax.view_init(elev=20, azim=45)
 plt.tight_layout()
 
 # Saving to file
-output_filename = "../outcomes/graph_1_avoided_loss.png"
+output_filename = "../outcomes/graphs/graph_1_avoided_loss.png"
 plt.savefig(output_filename, dpi=300, bbox_inches='tight')
 print(f"Graph saved as: {output_filename}")
 
