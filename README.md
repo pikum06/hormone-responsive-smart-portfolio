@@ -12,14 +12,14 @@ An interactive visual analytics dashboard and automated evaluation suite for bio
 
 ```text
 .
-├── data/                             # Raw telemetry baseline inputs (HRV & Macro stress data)
-├── outcomes/                         # Analytics execution outcomes & outputs
-│   ├── csv/                          # Processed signal CSVs & backtest execution logs
+├── data/                                                                     # Raw telemetry baseline inputs (HRV & Macro stress data)
+├── outcomes/                                                                 # Analytics execution outcomes & outputs
+│   ├── csv/                                                                  # Processed signal CSVs & backtest execution logs
 │   │   ├── final_backtest_results.csv
 │   │   ├── hormone_transaction_logs.csv
 │   │   ├── processed_bio_signals.csv
 │   │   └── processed_market_signals.csv
-│   └── graphs/                       # Performance visualizer plots & outcome charts
+│   └── graphs/                                                               # Performance visualizer plots & outcome charts
 │       ├── correlation_heatmap.png
 │       ├── Cortisol.png
 │       ├── final_analysis.png
@@ -30,23 +30,23 @@ An interactive visual analytics dashboard and automated evaluation suite for bio
 │       ├── mitigation_loss.png
 │       ├── panic_active.png
 │       └── panic_nominal.png
-├── research/                         # Quantitative models, signal engines & dashboard UI
-│   ├── analyzer.py                   # Macroeconomic trauma & yield curve stress analyzer
-│   ├── backtest_engine.py            # Local backtest simulator for bio-signal leverage adjustments
-│   ├── bio_processor.py              # Biometric signal processing & RMSSD score extraction
-│   ├── correlation.py                # Physiological stress vs. market volatility correlation
-│   ├── cortisol_beta.py              # Cortisol-beta correlation & sustainable leverage model
-│   ├── dashboard.py                  # Streamlit interactive bio-trading interface
-│   ├── graph_1.py                    # Avoided loss scatter plot generator
-│   ├── graph_2.py                    # Experience decay plot generator
-│   ├── graph_3.py                    # Slippage & cumulative yield plot generator
-│   ├── hormone.py                    # Biological circuit breaker core & leverage scaling logic
-│   ├── loss_mitigation.py            # Drawdown protection & loss mitigation analyzer
-│   ├── market_analyzer.py            # High-frequency market volatility & crash regime detection
-│   └── rolling_prediction.py         # 30-day rolling stress level & trajectory prediction
-├── .gitignore                        # Git exclusion rules
-├── README.md                         # Protocol documentation & architectural overview
-└── requirements.txt                  # Python dependency specifications 
+├── research/                                                                 # Quantitative models, signal engines & dashboard UI
+│   ├── analyzer.py                                                           # Macroeconomic trauma & yield curve stress analyzer
+│   ├── backtest_engine.py                                                    # Local backtest simulator for bio-signal leverage adjustments
+│   ├── bio_processor.py                                                      # Biometric signal processing & RMSSD score extraction
+│   ├── correlation.py                                                        # Physiological stress vs. market volatility correlation
+│   ├── cortisol_beta.py                                                      # Cortisol-beta correlation & sustainable leverage model
+│   ├── dashboard.py                                                          # Streamlit interactive bio-trading interface
+│   ├── graph_1.py                                                            # Avoided loss scatter plot generator
+│   ├── graph_2.py                                                            # Experience decay plot generator
+│   ├── graph_3.py                                                            # Slippage & cumulative yield plot generator
+│   ├── hormone.py                                                            # Biological circuit breaker core & leverage scaling logic
+│   ├── loss_mitigation.py                                                    # Drawdown protection & loss mitigation analyzer
+│   ├── market_analyzer.py                                                    # High-frequency market volatility & crash regime detection
+│   └── rolling_prediction.py                                                 # 30-day rolling stress level & trajectory prediction
+├── .gitignore                                                                # Git exclusion rules
+├── README.md                                                                 # Protocol documentation & architectural overview
+└── requirements.txt                                                          # Python dependency specifications 
 ```
 
 ---
