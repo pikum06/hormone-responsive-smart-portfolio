@@ -44,3 +44,5 @@ print(f"Saved graph as: {output_filename}")
 
 
 plt.close()
+
+# Updated outcomes directory paths for CSVs and graphs
