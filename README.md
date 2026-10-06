@@ -50,18 +50,30 @@ An interactive visual analytics dashboard and automated evaluation suite for bio
 
 ---
 
-## Dataset 
+## 📊 Datasets & Telemetry Benchmarks
 
-The protocol relies on the **SWELL Knowledge Work (SWELL-KW)** Heart Rate Variability dataset to establish physiological stress telemetry baselines and evaluate biological circuit breaker triggers:
+The protocol integrates dual-stream telemetry—combining physiological stress metrics with institutional-grade macroeconomic and market volatility signals—to evaluate biological circuit breaker triggers and dynamic deleveraging:
+
+### 1. Biometric Telemetry: SWELL Heart Rate Variability (HRV) Dataset
 
 * **Dataset**: [SWELL Heart Rate Variability (HRV) Dataset (Kaggle)](https://www.kaggle.com/datasets/qiriro/swell-heart-rate-variability-hrv)
-* **Origin**: Multimodal research conducted by Radboud University (Institute for Computing and Information Sciences) on 25 subjects under knowledge work scenarios.
-* **Experimental Stress Regimes**:
-  1. **No Stress**: Neutral baseline task environment (up to 45 minutes).
-  2. **Time Pressure**: Work duration constrained to $\frac{2}{3}$ of nominal completion time.
-  3. **Interruption**: Task execution under unexpected email interruptions and attention splits.
-* **Physiological Indicators**: Features ECG-derived Heart Rate Variability (HRV) indices (including RMSSD, SDNN, and LF/HF frequency ratios), skin conductance, and self-reported mental workload/stress metrics.
-* **Protocol Integration**: Serves as the real-world bio-signal baseline (`data/processed_bio_signals.csv`) ingested by `research/bio_processor.py` and `research/cortisol_beta.py` to compute RMSSD stress scores, model cortisol-beta correlations, and trigger dynamic leverage scaling in `research/hormone.py`.
+* **Origin**: Multimodal research conducted by Radboud University (Institute for Computing and Information Sciences) across knowledge work scenarios.
+* **Experimental Stress Regimes**: Neutral working state, time pressure constraints, and unexpected email interruption spikes.
+* **Physiological Indicators**: ECG-derived HRV metrics (RMSSD, SDNN, LF/HF ratios) and self-reported mental workload metrics.
+* **Protocol Integration**: Ingested by `research/bio_processor.py` and `research/cortisol_beta.py` to establish `data/processed_bio_signals.csv`, deriving real-time RMSSD stress scores and cortisol-beta regressions.
+
+
+### 2. Macroeconomic & Market Regimes: Algorithmic Trading Macro Stress Dataset
+
+* **Dataset**: [Algorithmic Trading: Macro Stress & Asset Regimes (Kaggle)](https://www.kaggle.com/datasets/kanchana1990/algorithmic-trading-macro-stress-and-asset-regimes)
+* **Author / Citation**: Kanchana Karunarathna
+* **DOI**: [`10.34740/kaggle/dsv/14952616`](https://doi.org/10.34740/kaggle/dsv/14952616)
+* **Sources**: Federal Reserve Bank of St. Louis (FRED) API and Yahoo Finance (`yfinance`).
+* **Time Horizon & Scope**: Over 4,100 aligned daily trading records across global asset classes (Equities, Bonds, Crypto, Commodities) and US macro indicators.
+* **Key Telemetry Features**:
+  * *Market Volatility & Asset Prices*: Bitcoin (`BTC_USD`), S&P 500 (`SPY`), Nasdaq (`QQQ`), Gold (`GLD`), CBOE VIX, and 30-day rolling volatility metrics (`BTC_Rolling_Vol_30d`, `SPY_Rolling_Vol_30d`).
+  * *Macro Liquidity & Credit Stress*: St. Louis Fed Financial Stress Index (`Financial_Stress_Index`), 10Y-2Y US Treasury Yield Curve Spread (`Yield_Curve_Spread`), and ICE BofA High Yield Option-Adjusted Spread (`High_Yield_Spread`).
+* **Protocol Integration**: Ingested by `research/market_analyzer.py` and `research/analyzer.py` to build `data/processed_market_signals.csv`, detecting high-volatility market regimes and cross-asset panic thresholds to initiate dynamic leverage scaling in `research/hormone.py`.
 
 ---
 
